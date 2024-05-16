@@ -58,8 +58,8 @@ async def demote(client, message):
      elif not user_stats.privileges.can_promote_members:
          return await message.reply("you need admin rights 😒")
      elif user_stats.privileges.can_promote_members:
-          msg = await message.reply_text("sad bro")
-          await bot.promote_chat_member(
+          msg = await message.reply_text("`Proccing...`")
+          await client.promote_chat_member(
             chat_id,
             new_admin.id,
             privileges=pyrogram.types.ChatPrivileges(
