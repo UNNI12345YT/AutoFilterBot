@@ -43,7 +43,7 @@ async def pin(_, message: Message):
     if not message.reply_to_message:
         return
     await message.reply_to_message.pin()
-    await message.reply_text("Yup Successful pinned ")
+    await message.reply_text("Yup pinned ")
 
 
 @Client.on_message(filters.command("unpin") & admin_fliter)             
@@ -51,4 +51,4 @@ async def unpin(_, message: Message):
     if not message.reply_to_message:
         return
     await message.reply_to_message.unpin()
-    await message.reply_text("Yup Successful unpinned ")
+    await message.reply_text("Yup unpinned ")
