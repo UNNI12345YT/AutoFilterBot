@@ -35,7 +35,7 @@ async def promoting(client, message):
             can_manage_video_chats=True,
             can_restrict_members=True
 ))
-          await msg.edit(f"successful promoted {admin.mention}")
+          await msg.edit(f"Alright!! Successful promoted {admin.mention}")
 
 
 @Client.on_message(filters.command("demote") & filters.group)
@@ -70,4 +70,4 @@ async def demote(client, message):
             can_manage_video_chats=False,
             can_restrict_members=False
 ))
-          await msg.edit(f"successful demoted 🥺 {admin.mention}")
+          await msg.edit(f"Hmm!! demoted 🥺 {admin.mention}")
