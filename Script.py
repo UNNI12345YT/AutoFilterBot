@@ -12,7 +12,7 @@ class script(object):
 ✯ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
     SOURCE_TXT = """<b>NOTE:</b>
 - Tᴏɴʏ Sᴛᴀʀᴋ Is Oᴘᴇɴ Pʀᴏᴊᴇᴄᴛ. 
-- Sᴏᴜʀᴄᴇ  - <a href=https://github.com/Mishel-Tg/AutoFilterBot>Repo</a
+- Sᴏᴜʀᴄᴇ  - https://github.com/Mishel-Tg/AutoFilterBot
 
 <b>DEVS:</b>
 - <a href=https://t.me/botuptest>Creator</a>"""
