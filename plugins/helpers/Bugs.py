@@ -12,7 +12,7 @@ async def feedda(client, message):
 @feed.on_message(filters.command("bug"))
 async def bug(client, message):
   bug = message.text.split(" ", 1)[1]
-  await message.reply_text(f"Hi {message.from_user.mention},\nSuccessfully Reported bugs to my devploers ")
+  await message.reply_text(f"Hi {message.from_user.mention},\nSuccessfully Reported Bugs To My Developer ")
 
   await client.send_message(LOG_CHANNEL, text=f"#error \n\nfrom {message.from_user.mention}\n error mes: <code>{bug}</code>")
   
