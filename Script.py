@@ -23,6 +23,10 @@ Bʏ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ.
 
 
 Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ /demote"""
+    TTS = """ Help:  TTS 🎤 module:
+Translate text to speech
+Commands and Usage:
+• /tts  : convert text to speech"""
     OPENAI = """ Gᴏᴏɢʟᴇ ᴀɪ Hᴇʟᴘ
 
 Cᴏᴍᴍᴀɴᴅꜱ ᴀɴᴅ Uꜱᴀɢᴇ:
