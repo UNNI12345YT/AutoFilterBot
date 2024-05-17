@@ -23,6 +23,11 @@ Bʏ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ.
 
 
 Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ /demote"""
+    FOND_TXT = """ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴜɴᴄᴛɪᴏɴ
+
+/font {your_text}
+
+ᴇɢ:- /font Unni """
     TTS = """ Help:  TTS 🎤 module:
 Translate text to speech
 Commands and Usage:
