@@ -23,6 +23,18 @@ Bʏ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ.
 
 
 Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ /demote"""
+    OPENAI = """ Gᴏᴏɢʟᴇ ᴀɪ Hᴇʟᴘ
+
+Cᴏᴍᴍᴀɴᴅꜱ ᴀɴᴅ Uꜱᴀɢᴇ:
+
+• /openai - [ǫᴜᴇꜱᴛɪᴏɴ] ᴀꜱᴋ ᴀ ǫᴜᴇꜱᴛɪᴏɴ ᴛᴏ ᴄʜᴀᴛɢᴘᴛ.
+"""
+    GOOGLE = """ OᴘᴇɴAɪ Hᴇʟᴘ
+
+Cᴏᴍᴍᴀɴᴅꜱ ᴀɴᴅ Uꜱᴀɢᴇ:
+
+• /gemini - [ǫᴜᴇꜱᴛɪᴏɴ] ᴀꜱᴋ ᴀ ǫᴜᴇꜱᴛɪᴏɴ ᴛᴏ Gᴏᴏɢʟᴇ ᴀɪ.
+"""
     MANUELFILTER_TXT = """Help: <b>Filters</b>
 
 - Filter is the feature were users can set automated replies for a particular keyword and EvaMaria will respond whenever a keyword is found the message
