@@ -2,6 +2,7 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram import filters, enums 
+from pyrogram.types import *
 
 
 async def admin_check(message: Message) -> bool:
@@ -43,7 +44,7 @@ async def pin(_, message: Message):
     if not message.reply_to_message:
         return
     await message.reply_to_message.pin()
-    await message.reply_text("Yup pinned ")
+    await message.reply_text("I Have Pinned That message")
 
 
 @Client.on_message(filters.command("unpin") & admin_fliter)             
@@ -51,4 +52,15 @@ async def unpin(_, message: Message):
     if not message.reply_to_message:
         return
     await message.reply_to_message.unpin()
-    await message.reply_text("Yup unpinned ")
+    await message.reply_text("I Have UnPinned That message")
+
+
+@Client.on_message(filters.command("unpin_all") & filters.group)
+async def unpinall_handler(client, message: Message):
+    try:
+     user = await client.get_chat_member(message.chat.id , message.from_user.id)
+     if user.status not in [enums.ChatMemberStatus.OWNER , enums.ChatMemberStatus.ADMINISTRATOR]:
+         raise PermissionError("You are not allowed to use this command")
+     await client.unpin_all_chat_messages(message.chat.id)
+    except Exception as e:
+     await message.reply_text(f"{e}")
