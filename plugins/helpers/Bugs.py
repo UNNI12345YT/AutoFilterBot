@@ -9,7 +9,6 @@ async def feedda(client, message):
 
   await client.send_message(LOG_CHANNEL, text=f"#Feedbackfromvazha\n\nfeeed back : <code>{fa}</code> user : {message.from_user.mention}") # 😁
 
-
 @feed.on_message(filters.command("bug"))
 async def bug(client, message):
   bug = message.text.split(" ", 1)[1]
