@@ -455,7 +455,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ  ', callback_data='storeda'),
             InlineKeyboardButton('Pʀᴏᴍᴏᴛᴇ ', callback_data='prmt')
         ], [
-            InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅs', callback_data='extra'),            
+            InlineKeyboardButton('Pɪɴ ', callback_data='pin'),
+            InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅs', callback_data='extra'),
+            InlineKeyboardButton('Pᴏɴɢ', callback_data='pong')
         ], [
             InlineKeyboardButton('♙ Hᴏᴍᴇ ♙', callback_data='start'),            
         ]]
@@ -479,6 +481,26 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FLTERS_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "pong":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.PONG_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "pin":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.PIN_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
