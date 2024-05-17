@@ -459,7 +459,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅs', callback_data='extra'),
             InlineKeyboardButton('Pᴏɴɢ', callback_data='pong')
         ], [
-            InlineKeyboardButton('♙ Hᴏᴍᴇ ♙', callback_data='start'),            
+            InlineKeyboardButton('Gᴏᴏɢʟᴇ ᴀɪ', callback_data='google'),
+            InlineKeyboardButton('Oᴘᴇɴᴀɪ ', callback_data='openai'),
+            InlineKeyboardButton('Tᴛs', callback_data='tts')
+        ], [
+            InlineKeyboardButton('♙ Hᴏᴍᴇ ♙', callback_data='start')         
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -491,6 +495,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.PONG_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "tts":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.TTS,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "openai":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.OPENAI,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "google":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.GOOGLE,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
