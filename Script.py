@@ -27,7 +27,7 @@ Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛ
 
 /font {your_text}
 
-ᴇɢ:- /font Unni """
+ᴇɢ:- /font Hello """
     TTS = """ Help:  TTS 🎤 module:
 Translate text to speech
 Commands and Usage:
