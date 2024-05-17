@@ -463,6 +463,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Oᴘᴇɴᴀɪ ', callback_data='openai'),
             InlineKeyboardButton('Tᴛs', callback_data='tts')
         ], [
+            InlineKeyboardButton('Bᴜɢs Rᴇᴘᴏʀᴛ', callback_data='bugs'),
+            InlineKeyboardButton('Fᴏɴᴛ', callback_data='font'),
+            InlineKeyboardButton('Fᴇᴇᴅʙᴀᴄᴋ ', callback_data='feed')
+        ], [
             InlineKeyboardButton('♙ Hᴏᴍᴇ ♙', callback_data='start')         
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -485,6 +489,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FLTERS_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "feed":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.FEED,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "font":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.FONT_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "bugs":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.BUG_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
