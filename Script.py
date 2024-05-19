@@ -28,6 +28,11 @@ Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛ
 /font {your_text}
 
 ᴇɢ:- /font Hello """
+    STICKER = """ yᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ ᴍᴏᴅᴜʟᴇ ᴛᴏ ꜰɪɴᴅᴀɴy  ꜱᴛɪᴄᴋᴇʀꜱ ɪᴅ.
+• ᴜꜱᴀɢᴇ :ᴛᴏ ɢᴇᴛ ꜱᴛɪᴄᴋᴇʀ
+ 
+⭕ ʜᴏᴡ ᴛᴏ ᴜꜱᴇ
+◉ Reply To Any Sticker [/stickerid]"""
     TTS = """ Help:  TTS 🎤 module:
 Translate text to speech
 Commands and Usage:
