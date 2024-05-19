@@ -539,7 +539,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Fᴏɴᴛ', callback_data='font'),
             InlineKeyboardButton('Fᴇᴇᴅʙᴀᴄᴋ ', callback_data='feed')
         ], [
-            InlineKeyboardButton('♙ Hᴏᴍᴇ ♙', callback_data='start')         
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ', callback_data='start'),
+            InlineKeyboardButton('Nᴇxᴛ ⇌', callback_data='helpps')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "helpps":
+        buttons = [[
+            InlineKeyboardButton('Sᴛɪᴄᴋᴇʀ ɪᴅ ', callback_data='stcker'),            
+        ], [
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -561,6 +574,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FLTERS_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "stcker":
+        buttons = [[                        
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='helpps')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.STICKER,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
