@@ -454,6 +454,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat_id=query.from_user.id,
                     file_id=file_id,
                     caption=f_caption,
+                    reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton('• Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ •', url=UPDATE_CHANNEL) ] ] ),
                     protect_content=True if ident == "filep" else False 
                 )
                 await query.answer('Cʜᴇᴄᴋ PM, I ʜᴀᴠᴇ sᴇɴᴛ ғɪʟᴇs ɪɴ ᴘᴍ', show_alert=True)
@@ -1129,7 +1130,6 @@ async def auto_filter(client, msg, spoll=False):
             if settings["auto_delete"]:
                 await asyncio.sleep(600)
                 await mes.delete()
-                await message.delete()
                 dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
                 await asyncio.sleep(100)
                 await dai.delete()
@@ -1140,7 +1140,6 @@ async def auto_filter(client, msg, spoll=False):
             if settings["auto_delete"]:
                 await asyncio.sleep(600)
                 await sir.delete()
-                await message.delete()
                 dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
                 await asyncio.sleep(100)
                 await dai.delete()
@@ -1150,7 +1149,6 @@ async def auto_filter(client, msg, spoll=False):
             if settings["auto_delete"]:
                 await asyncio.sleep(600)
                 await andi.delete()
-                await message.delete()
                 dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
                 await asyncio.sleep(100)
                 await dai.delete()
@@ -1159,7 +1157,6 @@ async def auto_filter(client, msg, spoll=False):
         if settings["auto_delete"]:
             await asyncio.sleep(600)
             await perfectok.delete()
-            await message.delete()
             dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
             await asyncio.sleep(100)
             await dai.delete()
