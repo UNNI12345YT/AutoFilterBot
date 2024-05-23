@@ -679,7 +679,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "storeda":
         buttons = [[                        
-            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='filter')
+            InlineKeyboardButton('⇌ Bᴀᴄᴋ ⇌', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
