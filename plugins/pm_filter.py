@@ -6,6 +6,7 @@ import math
 import random 
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
+from info import *
 import pyrogram
 from pyrogram import *
 from pyrogram.types import *
