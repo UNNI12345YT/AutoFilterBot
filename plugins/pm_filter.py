@@ -1,6 +1,7 @@
 # Kanged From @TroJanZheX
 import asyncio
 import re
+from pyrogram import *
 import ast
 import math
 import random 
@@ -8,7 +9,6 @@ from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidD
 from Script import script
 from info import *
 import pyrogram
-from pyrogram import *
 from pyrogram.types import *
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
