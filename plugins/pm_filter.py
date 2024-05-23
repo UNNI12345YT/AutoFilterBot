@@ -1130,6 +1130,9 @@ async def auto_filter(client, msg, spoll=False):
                 await asyncio.sleep(600)
                 await mes.delete()
                 await message.delete()
+                dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+                await asyncio.sleep(100)
+                await dai.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
@@ -1138,6 +1141,9 @@ async def auto_filter(client, msg, spoll=False):
                 await asyncio.sleep(600)
                 await sir.delete()
                 await message.delete()
+                dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+                await asyncio.sleep(100)
+                await dai.delete()
         except Exception as e:
             logger.exception(e)
             andi=await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
@@ -1145,12 +1151,18 @@ async def auto_filter(client, msg, spoll=False):
                 await asyncio.sleep(600)
                 await andi.delete()
                 await message.delete()
+                dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+                await asyncio.sleep(100)
+                await dai.delete()
     else:
         perfectok=await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
         if settings["auto_delete"]:
             await asyncio.sleep(600)
             await perfectok.delete()
             await message.delete()
+            dai=await message.reply(f"<b>Hey<i>{message.from_user.first_name}</i>\n\nYour Request Has Been Deleted 👍 \n(Due To Avoid Copyrights Issue😌)\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+            await asyncio.sleep(100)
+            await dai.delete()
     if spoll:
         await msg.message.delete()
 
