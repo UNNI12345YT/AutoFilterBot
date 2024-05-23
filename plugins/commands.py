@@ -1,6 +1,7 @@
 import os
 import logging
 import random
+from info import *
 import asyncio
 from Script import script
 from pyrogram import Client, filters, enums
