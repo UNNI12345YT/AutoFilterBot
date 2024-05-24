@@ -32,7 +32,7 @@ async def chatgpt(_, message):
 
 
 @Client.on_message(filters.command(["bard", "gemini"]))
-async def bard(_, message):
+async def bard(app, message):
     chat_id = message.chat.id
     message_id = message.id
     
