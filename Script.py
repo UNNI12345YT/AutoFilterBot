@@ -3,26 +3,26 @@ class script(object):
 𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 <a href=https://t.me/{}>{}</a>, 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚅𝙸𝙴𝚂, 𝙹𝚄𝚂𝚃 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙽𝙳 𝙴𝙽𝙹𝙾𝚈 😍</b></i>"""
     HELP_TXT = """𝙷𝙴𝚈 {}
 𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
-    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: {}
+    ABOUT_TXT = """<b>✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: {}
 ✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: <a href=https://t.me/HORRIDduo>Creator</a>
 ✯ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈: 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼
 ✯ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹
 ✯ 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴: 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱
 ✯ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: 𝙷𝙴𝚁𝙾𝙺𝚄
-✯ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
+✯ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]</b>"""
     SOURCE_TXT = """<b>NOTE:</b>
 - Tᴏɴʏ Sᴛᴀʀᴋ Is Oᴘᴇɴ Pʀᴏᴊᴇᴄᴛ. 
 - Sᴏᴜʀᴄᴇ  - https://github.com/Mishel-Tg/AutoFilterBot
 
 <b>DEVS:</b>
 - <a href=https://t.me/botuptest>Creator</a>"""
-    PROMOTE = """ Yᴏᴜ ᴄᴀɴ ᴍᴀᴋᴇ ᴍᴇᴍʙᴇʀs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ
+    PROMOTE = """<b>Yᴏᴜ ᴄᴀɴ ᴍᴀᴋᴇ ᴍᴇᴍʙᴇʀs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ
  
 Bʏ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ. 
 /promote 
 
 
-Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ /demote"""
+Yᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ᴛʜᴇᴍ ʙʏ ᴀᴅᴍɪɴ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ /demote</b>"""
     FONT_TXT = """ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴜɴᴄᴛɪᴏɴ
 
 /font {your_text}
@@ -53,6 +53,12 @@ Cᴏᴍᴍᴀɴᴅꜱ ᴀɴᴅ Uꜱᴀɢᴇ:
 
 • /gemini - [ǫᴜᴇꜱᴛɪᴏɴ] ᴀꜱᴋ ᴀ ǫᴜᴇꜱᴛɪᴏɴ ᴛᴏ Gᴏᴏɢʟᴇ ᴀɪ.
 """
+    ECHO = """ Tʜɪs ғᴇᴄᴛᴜʀᴇ ɪs ᴠᴇʀʏ ɪɴᴛᴇʀᴇsᴛɪɴɢ ᴀɴᴅ ғᴜɴɴʏ 
+
+ Tʜᴇ MEMBERS ᴏғ ʏᴏᴜʀ ɢʀᴏᴜᴘ ʀᴇᴘʟʏ ᴛᴇxᴛ
+
+ Tʜᴀᴛ ᴡɪʟʟ sʜᴏᴡ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ ʀᴇᴘʟʏᴇᴅ ᴀɴᴅ ᴛʜᴇɴ ᴏᴜʀ ᴍᴇssᴀɢᴇ ᴅᴇʟᴇᴛᴇ ᴡɪʟʟ
+ """
     MANUELFILTER_TXT = """Help: <b>Filters</b>
 
 - Filter is the feature were users can set automated replies for a particular keyword and EvaMaria will respond whenever a keyword is found the message
