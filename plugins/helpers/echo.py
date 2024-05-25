@@ -3,7 +3,7 @@
 from pyrogram import Client, filters, enums
 from pyrogram.types import *
 
-@Client.on_message(filters.command("echo"))
+@Client.on_message(filters.command("echo") & filters.group)
 async def echo(client, message):
     try:
         # Check user permissions
@@ -26,3 +26,9 @@ async def echo(client, message):
 
     await reply.reply_text(message.text.split(None, 1)[1])
     await message.delete()
+
+
+
+@Client.on_message(filters.command("echo") & filters.private)
+async def echoptp(client, message):
+    await message.reply_text("Sorry dude This command Only work in group 😊")
