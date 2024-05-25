@@ -1,3 +1,4 @@
+
 from pyrogram import Client, filters, enums
 from pyrogram.types import *
 
@@ -10,9 +11,8 @@ async def echo(client, message):
             await message.reply_text("You don't have permission to use this command.")
             return
     except Exception as error:
-         print(error)
         # Handle case where bot lacks permissions to get member info
-        await message.reply_text(f"An error occured. I may not have permission to check user status. {error}")
+        await message.reply_text(f"An error occurred. I may not have permission to check user status. {error}")
         return
 
     reply = message.reply_to_message
