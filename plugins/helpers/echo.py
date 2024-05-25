@@ -1,14 +1,26 @@
 from pyrogram import Client, filters, enums
-from info import *
-from pyrogram.types import *
+from pyrogram.errors import ChatMemberCantDoThis
 
 @Client.on_message(filters.command("echo"))
 async def echo(client, message):
-    user = await client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.status not in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR]:
-        raise PermissionError("You are not allowed to use this command")
+    try:
+        # Check user permissions
+        user = await client.get_chat_member(message.chat.id, message.from_user.id)
+        if user.status not in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR]:
+            await message.reply_text("You don't have permission to use this command.")
+            return
+    except ChatMemberCantDoThis:
+        # Handle case where bot lacks permissions to get member info
+        await message.reply_text("An error occured. I may not have permission to check user status.")
+        return
+
     reply = message.reply_to_message
     chat_id = message.chat.id
-    if reply and len(message.text.split()) > 1:
-        await reply.reply_text(message.text.split(None, 1)[1])
+
+    if not reply:
+        # No message replied to
+        await message.reply_text("Please reply to a message to echo its content.")
+        return
+
+    await reply.reply_text(message.text.split(None, 1)[1])
     await message.delete()
