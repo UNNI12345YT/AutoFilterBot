@@ -1,5 +1,5 @@
 from pyrogram import Client, filters, enums
-from pyrogram.errors import ChatMemberCantDoThis
+from pyrogram.types import *
 
 @Client.on_message(filters.command("echo"))
 async def echo(client, message):
@@ -9,9 +9,10 @@ async def echo(client, message):
         if user.status not in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR]:
             await message.reply_text("You don't have permission to use this command.")
             return
-    except ChatMemberCantDoThis:
+    except Exception as error:
+         print(error)
         # Handle case where bot lacks permissions to get member info
-        await message.reply_text("An error occured. I may not have permission to check user status.")
+        await message.reply_text("An error occured. I may not have permission to check user status. {error}")
         return
 
     reply = message.reply_to_message
