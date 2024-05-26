@@ -3,7 +3,7 @@ from pyrogram import Client, filters
 import requests
 import wget 
 
-@Client.on_message(filters.command("image"))
+@Client.on_message(filters.command(["image", "img", "image_serch", "photo"]))
 async def safoneapi(client, message):
     try:
         user_query = ' '.join(message.command[1:])
