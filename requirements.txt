@@ -6,6 +6,8 @@ marshmallow==3.14.1
 umongo==3.0.1
 requests
 cinemagoer
+lexica-api
+httpx[http2]
 bs4
 git+https://github.com/Joelkb/cinemagoer
 datetime
