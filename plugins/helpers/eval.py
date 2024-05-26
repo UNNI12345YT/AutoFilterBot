@@ -1,7 +1,6 @@
 from pyrogram import *
 import sys
 import io
-import config
 import time
 import os
 import traceback
