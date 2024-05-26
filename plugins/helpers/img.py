@@ -51,7 +51,7 @@ def getImageContent(url):
 @Client.on_message(filters.command(["img","image","imagesearch"]))
 async def searchImages(_: Client,m:t.Message):
     try:
-        reply = await m.reply_text("")
+        reply = await m.reply_text("⏳")
         prompt = getText(m)
         if prompt is None:
             return await reply.edit("What do you want to search?")
