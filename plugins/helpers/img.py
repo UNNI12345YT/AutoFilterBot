@@ -17,7 +17,9 @@ async def safoneapi(client, message):
             image_data = data['results'][0]
             image_url = image_data['imageUrl']
             downloaded_image = wget.download(image_url)
-            await client.send_photo(message.chat.id, downloaded_image)           
+            kndi = await message.reply_text("`Serching...`")
+            await client.send_photo(message.chat.id, downloaded_image)     
+            kndi.delete()
 
     except Exception as e:
         await message.reply_text(f"An error occurred\nMybe it's error is api problem: {e}")
