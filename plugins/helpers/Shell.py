@@ -6,10 +6,8 @@ import asyncio
 import os
 import io
 
-@Client.on_message(filters.command(["sh", "shell"]))
-async def shell(client, message):
-    if message.from_user.id != ADMINS:
-        return await message.reply_text("This command only works for my developers.")
+@Client.on_message(filters.command(["sh", "shell"]) & filters.user(ADMINS))
+async def shell(client, message):    
     if len(message.command) < 2:
         await message.reply("Give an input!")
         return
