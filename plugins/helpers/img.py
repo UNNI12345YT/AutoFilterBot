@@ -35,10 +35,9 @@ async def nekobin(data,extension=None):
     return {"error": "Unable to reach nekobin."}
 
 
-async def SearchImages(query,search_engine) -> dict:
-    client = AsyncClient()
-    output = await client.SearchImages(query,0,search_engine)
-    await client.close()
+async def SearchImages(query, search_engine) -> dict:
+    async with AsyncClient() as client:
+        output = await client.SearchImages(query, 0, search_engine)
     return output
 
 
