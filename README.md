@@ -54,6 +54,14 @@ python3 bot.py
 </p>
 </details>
 
+<details><summary>Deploy To Render</summary>
+<p>
+<pre>
+[Watch This video](https://youtu.be/wJZWE2wdRM8?si=jik03F0MvJdZSCD9): 
+</pre>
+</p>
+</details>
+
 
 ## Commands
 ```
@@ -97,13 +105,6 @@ python3 bot.py
  - Thanks To All Everyone In This Journey
  - Thanks To [EvamariaTG](https://raw.githubusercontent.com/EvamariaTG) for their awesome [EvaMaria Bot](https://raw.githubusercontent.com/EvamariaTG/EvaMaria)
  - Thanks To All Everyone In This Journey
-
-### Note
-
-[Note To A So Called Dev](https://telegram.dog/subin_works/203): 
-
-Kanging this codes and and editing a few lines and releasing a V.x  or an [alpha](https://telegram.dog/subin_works/204), beta , gama branches of your repo won't make you a Developer.
-Fork the repo and edit as per your needs.
 
 ## Disclaimer
 [![GNU Affero General Public License 2.0](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html#header)    
