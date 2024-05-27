@@ -15,10 +15,48 @@ import time  # Importing the time library to check the time of code execution
 import urllib.request
 from http.client import BadStatusLine
 from urllib.parse import quote
+from shutil import rmtree
+from pyrogram import Client, filters
+from pyrogram.types import InputMediaPhoto
 from urllib.request import HTTPError, Request, URLError, urlopen
 
 # Import Libraries
-from plugins.Helper.async_searcher import async_searcher
+import aiohttp
+
+async def async_searcher(
+    url: str,
+    post: bool = None,
+    headers: dict = None,
+    params: dict = None,
+    json: dict = None,
+    data: dict = None,
+    ssl=None,
+    re_json: bool = False,
+    re_content: bool = False,
+    real: bool = False,
+    *args,
+    **kwargs,
+):
+    try:
+        import aiohttp
+    except ImportError:
+        raise DependencyMissingError(
+            "'aiohttp' is not installed!\nthis function requires aiohttp to be installed."
+        )
+    async with aiohttp.ClientSession(headers=headers) as client:
+        if post:
+            data = await client.post(
+                url, json=json, data=data, ssl=ssl, *args, **kwargs
+            )
+        else:
+            data = await client.get(url, params=params, ssl=ssl, *args, **kwargs)
+        if re_json:
+            return await data.json()
+        if re_content:
+            return await data.read()
+        if real:
+            return data
+        return await data.text()
 
 http.client._MAXHEADERS = 1000
 
@@ -1154,3 +1192,45 @@ class googleimagesdownload:
 
                     total_errors += errorCount
         return paths, total_errors
+
+
+
+
+def listToString(s):
+    str1 = " "
+    return (str1.join(s))
+
+@Client.on_message(filters.command("img"))
+async def img(bot, message):
+ 
+    img = await message.reply("`Processing...`")
+    
+    if len(message.command) == 1:
+      return await img.edit("No query provided to search, Read Help Menu to know how command works.")
+       
+    elif len(message.command) > 1:
+      query = message.command[1:]
+      hemlo = query[0]
+      limit = 5
+      if ";" in query:
+        try:
+            query = query.split(";")[0]
+            limit = int(query.split(";")[1])
+        except BaseException:
+            pass
+      
+      ggl = googleimagesdownload()
+      args = {
+          "keywords": query,
+          "limit": limit,
+          "format": "jpg",
+          "output_directory": "./resources/",
+      }
+      path = await ggl.download(args)
+      s = [InputMediaPhoto(path[0][hemlo][0]), InputMediaPhoto(path[0][hemlo][1]), InputMediaPhoto(path[0][hemlo][2]), InputMediaPhoto(path[0][hemlo][3]), InputMediaPhoto(path[0][hemlo][4])]
+      await message.reply_media_group(media=s)
+      rmtree(f"./resources/{hemlo}/")
+      await img.delete()
+      
+    else:
+      return await img.edit("Parameter limit exceeded, Read Help Menu to know how command works.")
