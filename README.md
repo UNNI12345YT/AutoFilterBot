@@ -62,6 +62,14 @@ python3 bot.py
 </p>
 </details>
 
+<details><summary>How to Deploy</summary>
+<p>
+<pre>
+<a href=https://youtu.be/wJZWE2wdRM8?si=jik03F0MvJdZSCD9>Toturial Video</a>
+</pre>
+</p>
+</details>
+
 
 ## Commands
 ```
