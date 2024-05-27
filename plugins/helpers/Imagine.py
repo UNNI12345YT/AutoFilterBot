@@ -4,7 +4,7 @@ import os
 from pyrogram import filters, Client 
 
 # Command handler for /gen
-@Client.on_message(filters.command('gen'))
+@Client.on_message(filters.command('gen','imagine','generate'))
 async def generate_image(client, message):
     # Get the prompt from the command
     prompt = ' '.join(message.command[1:])
