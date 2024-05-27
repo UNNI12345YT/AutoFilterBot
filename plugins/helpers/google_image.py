@@ -1,8 +1,3 @@
-
-
-###### Searching and Downloading Google Images to the local disk ######
-
-
 import codecs
 import datetime
 import http.client
@@ -11,7 +6,7 @@ import os
 import re
 import ssl
 import sys
-import time  # Importing the time library to check the time of code execution
+import time  
 import urllib.request
 from http.client import BadStatusLine
 from urllib.parse import quote
