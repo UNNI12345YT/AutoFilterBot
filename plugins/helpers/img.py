@@ -37,7 +37,7 @@ async def nekobin(data,extension=None):
 
 async def SearchImages(query,search_engine) -> dict:
     client = AsyncClient()
-    output = await client.SearchImages(query,0,search_engine)
+    output = await client.SearchImages(query=query, 0=0, search_engine=search_engine)
     await client.close()
     return output
 
