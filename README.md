@@ -57,7 +57,7 @@ python3 bot.py
 <details><summary>Deploy To Render</summary>
 <p>
 <pre>
-[Watch This video](https://youtu.be/wJZWE2wdRM8?si=jik03F0MvJdZSCD9): 
+[Watch This video](https://youtu.be/wJZWE2wdRM8?si=jik03F0MvJdZSCD9)
 </pre>
 </p>
 </details>
