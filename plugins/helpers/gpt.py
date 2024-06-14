@@ -17,7 +17,7 @@ def fetch_data(api_url: str, query: str) -> tuple:
     except Exception as e:
         return None, f"An error occurred: {str(e)}"
 
-@Client.on_message(filters.command(["openai", "ask", "gpt"]))
+@Client.on_message(filters.command(["openai", "gpt"]))
 async def chatgpt(_, message):
     if len(message.command) < 2:
         return await message.reply_text("Give An Input!!")
