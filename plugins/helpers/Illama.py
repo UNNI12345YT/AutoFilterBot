@@ -23,7 +23,7 @@ def fetch_data(api_url: str, query: str) -> tuple:
 
 
 
-@Client.on_message(filters.command(["openai"]))
+@Client.on_message(filters.command(["openai","gpt"]))
 async def chatgpt5(_: Client, message: Message):
     if len(message.command) < 2:
         return await message.reply_text("Give An Input!!")
