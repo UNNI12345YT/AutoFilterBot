@@ -1,8 +1,9 @@
+import requests
 from pyrogram import Client, filters
 
 Client.on_message(filters.command("hack"))
 async def hackai(client, message):
-import requests
+
 
 mes = "what is your name"
 ow = "@UNNIdud"
