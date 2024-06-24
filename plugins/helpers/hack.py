@@ -1,7 +1,7 @@
 import requests
 from pyrogram import Client, filters
 
-@Client.on_message(filters.command("hackai"))
+@Client.on_message(filters.command("hack"))
 async def hack_ai(client, message):
     query = message.text.split(' ', 1)[1]  
     api = f"https://horrid-api.onrender.com/hackai?query={query}"
