@@ -12,7 +12,7 @@ async def pinterest(client, message):
     except IndexError:
         return await message.reply("Please provide an image name to search for.")
 
-    url = f"https://pinterest-api-one.vercel.app/?q={query}"  # Construct the API URL
+    url = f"https://api.safone.dev/image?q={query}"  # Construct the API URL
 
     # Make the request using requests library (remove 'get' from imports)
     response = requests.get(url)
