@@ -5,7 +5,7 @@ from pyrogram import filters
 from REPO import app
 
 # Command handler for /generate
-@app.on_message(filters.command('img'))
+@Client.on_message(filters.command('img'))
 async def generate_image(client, message):
     # Get the prompt from the command
     prompt = ' '.join(message.command[1:])
