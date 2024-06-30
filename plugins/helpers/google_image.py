@@ -1,8 +1,5 @@
 import requests
-import time
-import os
-from pyrogram import filters
-from REPO import app
+from pyrogram import Client, filters
 
 # Command handler for /generate
 @Client.on_message(filters.command('img'))
