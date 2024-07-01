@@ -3,9 +3,10 @@ import re
 from .. import pgram, aiohttpsession as session
 from aiohttp import FormData
 from pyrogram import filters, types, enums, errors
+
 def id_generator() -> str:
     return str(uuid.uuid4())
-​
+
 @pgram.on_message(filters.command("blackbox"))
 async def blackbox(bot, message):
     m = message
@@ -37,7 +38,7 @@ async def blackbox(bot, message):
                 async with session.post(api_url, data=data) as response:
                     response_json = await response.json()
             except Exception as e:
-                return await msg.edit(
+                return await msg.edit_text(
                     f"❌ Error: {str(e)}"
                 )
             
@@ -60,14 +61,14 @@ async def blackbox(bot, message):
                 async with session.post(url, headers=headers, json=data) as response:
                     response_text = await response.text()
             except Exception as e:
-                return await msg.edit(
+                return await msg.edit_text(
                     f"❌ Error: {str(e)}"
                 )
             
             cleaned_response_text = re.sub(r'^\$?@?\$?v=undefined-rv\d+@?\$?|\$?@?\$?v=v\d+\.\d+-rv\d+@?\$?', '', response_text)
             text = cleaned_response_text.strip()[2:]
             if "$~~~$" in text:
-                text = re.sub(r'\$~~~\$.*?\$~~~\$', '', text, flags=re.DOTALL)
+                text = re.sub(r'\$~\$.*?\$~\$', '', text, flags=re.DOTALL)
             rdata = {'reply': text}
         
             return await msg.edit_text(
@@ -96,16 +97,20 @@ async def blackbox(bot, message):
                 async with session.post(url, headers=headers, json=data) as response:
                     response_text = await response.text()
             except Exception as e:
-                return await msg.edit(
+                return await msg.edit_text(
                     f"❌ Error: {str(e)}"
-                )
-            
-            cleaned_response_text = re.sub(r'^\$?@?\$?v=undefined-rv\d+@?\$?|\$?@?\$?v=v\d+\.\d+-rv\d+@?\$?', '', response_text)
-            text = cleaned_response_text.strip()[2:]
-            if "$~~~$" in text:
-                text = re.sub(r'\$~~~\$.*?\$~~~\$', '', text, flags=re.DOTALL)
             rdata = {'reply': text}
             
             return await msg.edit_text(
                 text=rdata['reply']
+            )
+            
+            cleaned_response_text = re.sub(r'^\$?@?\$?v=undefined-rv\d+@?\$?|\$?@?\$?v=v\d+\.\d+-rv\d+@?\$?', '', response_text)
+            text = cleaned_response_text.strip()[2:]
+            if "$~~~$" in text:
+                text = re.sub(r'\$~\$.*?\$~\$', '', text, flags=re.DOTALL)
+            
+            return await msg.edit_text(
+                text=text
+            )
             )
