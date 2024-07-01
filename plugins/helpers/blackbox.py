@@ -3,7 +3,6 @@ import re
 from .. import pgram, aiohttpsession as session
 from aiohttp import FormData
 from pyrogram import filters, types, enums, errors
-​
 def id_generator() -> str:
     return str(uuid.uuid4())
 ​
