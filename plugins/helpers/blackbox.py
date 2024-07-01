@@ -1,6 +1,6 @@
 import uuid
 import re
-from .. import pgram, aiohttpsession as session
+Import to init.py, aiohttpsession as session
 from aiohttp import FormData
 from pyrogram import filters, types, enums, errors
 
