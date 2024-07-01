@@ -98,12 +98,8 @@ async def blackbox(bot, message):
                     response_text = await response.text()
             except Exception as e:
                 return await msg.edit_text(
-                    f"❌ Error: {str(e)}"
-            rdata = {'reply': text}
-            
-            return await msg.edit_text(
-                text=rdata['reply']
-            )
+                    f"❌ Error: {str(e)}"                
+     )
             
             cleaned_response_text = re.sub(r'^\$?@?\$?v=undefined-rv\d+@?\$?|\$?@?\$?v=v\d+\.\d+-rv\d+@?\$?', '', response_text)
             text = cleaned_response_text.strip()[2:]
@@ -112,5 +108,4 @@ async def blackbox(bot, message):
             
             return await msg.edit_text(
                 text=text
-            )
-            )
+            )         
