@@ -1,6 +1,6 @@
 import uuid
 import re
-import to init.py
+import to init
 from aiohttp import FormData
 from pyrogram import filters, types, enums, errors
 
