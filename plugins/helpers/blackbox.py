@@ -1,8 +1,9 @@
 import uuid
 import re
-from to import init
+import aiohttp
+
 from aiohttp import FormData
-from pyrogram import filters, types, enums, errors
+from pyrogram import Client as pgram, filters, types, enums, errors
 
 def id_generator() -> str:
     return str(uuid.uuid4())
