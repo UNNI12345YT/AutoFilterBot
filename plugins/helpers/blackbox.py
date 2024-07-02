@@ -1,6 +1,6 @@
 import uuid
 import re
-from to import init
+from import init
 from aiohttp import FormData
 from pyrogram import filters, types, enums, errors
 
