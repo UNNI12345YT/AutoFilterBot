@@ -36,8 +36,9 @@ async def blackbox(bot, message):
             data.add_field('image', image, filename=file_name, content_type='image/jpeg')
             api_url = "https://www.blackbox.ai/api/upload"
             try:
-                async with session.post(api_url, data=data) as response:
-                    response_json = await response.json()
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(api_url, data=data) as response:
+                          response_json = await response.json()
             except Exception as e:
                 return await msg.edit_text(
                     f"❌ Error: {str(e)}"
@@ -59,8 +60,9 @@ async def blackbox(bot, message):
             headers = {"Content-Type": "application/json"}
             url = "https://www.blackbox.ai/api/chat"
             try:
-                async with session.post(url, headers=headers, json=data) as response:
-                    response_text = await response.text()
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(url, headers=headers, json=data) as response:
+                         response_text = await response.text()
             except Exception as e:
                 return await msg.edit_text(
                     f"❌ Error: {str(e)}"
@@ -95,8 +97,9 @@ async def blackbox(bot, message):
             headers = {"Content-Type": "application/json"}
             url = "https://www.blackbox.ai/api/chat"
             try:
-                async with session.post(url, headers=headers, json=data) as response:
-                    response_text = await response.text()
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(url, headers=headers, json=data) as response:
+                         response_text = await response.text()
             except Exception as e:
                 return await msg.edit_text(
                     f"❌ Error: {str(e)}"                
