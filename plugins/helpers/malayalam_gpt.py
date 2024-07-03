@@ -23,7 +23,7 @@ async def lexica_askbot(client, message):
                 'content': text,
             },
         ],
-        "model_id": 38
+        "model_id": 24
     }
 
     api = 'https://api.qewertyy.dev/models'
