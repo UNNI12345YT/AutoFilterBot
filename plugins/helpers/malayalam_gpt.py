@@ -34,4 +34,6 @@ async def lexica_askbot(client, message):
         data = response.json()
         await txt.edit(data['content'])
     except requests.exceptions.RequestException as e:
-        await txt.edit(f"Error: {str(e)}")
+        error_message = f"Error: {str(e)}\nResponse Content: {response.content}"
+        await txt.edit(error_message)
+
