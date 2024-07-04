@@ -1,54 +1,38 @@
+from pyrogram import Client, filters
 import requests
-import time
-import os
-from pyrogram import filters, Client 
 
-# Command handler for /gen
-@Client.on_message(filters.command('gen','imagine','generate'))
-async def generate_image(client, message):
-    # Get the prompt from the command
-    prompt = ' '.join(message.command[1:])
-
-    # Send a message to inform the user to wait
-    wait_message = await message.reply_text("Please wait while I generate the image...")
-    StartTime = time.time()
-
-
-    # API endpoint URL
-    url = 'https://ai-api.magicstudio.com/api/ai-art-generator'
-
-    # Form data for the request
-    form_data = {
-        'prompt': prompt,
-        'output_format': 'bytes',
-        'request_timestamp': str(int(time.time())),
-        'user_is_subscribed': 'false',
+@Client.on_message(filters.command('imagine'))
+async def imagine(client, message):
+    prompt = " ".join(message.text.split()[1:])
+    
+    if not prompt:
+        await message.reply_text("Please provide a prompt.")
+        return
+    
+    txt = await message.reply_text("🔍 Generating image...")
+    
+    url = 'https://nandha-api.onrender.com/imagine'
+    params = {
+        'prompt': prompt
     }
 
-    # Send a POST request to the API
-    response = requests.post(url, data=form_data)
+    headers = {
+        'accept': 'application/json'
+    }
 
-    if response.status_code == 200:
-        try:
-            if response.content:
-                destination_dir = ''
-                destination_path = os.path.join(destination_dir, 'generated_image.jpg')
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+        await txt.edit(str(data))
+    except requests.exceptions.RequestException as e:
+        error_details = {
+            'error': str(e),
+            'response_content': response.content.decode('utf-8') if response.content else None
+        }
+        await txt.edit(f"Error: {error_details}")
 
-                # Save the image to the destination path
-                with open(destination_path, 'wb') as f:
-                    f.write(response.content)
+# Run the bot
+app = Client("my_bot")
 
-                # Delete the wait message
-                await wait_message.delete()
-
-                # Send the generated image
-                await message.reply_photo(destination_path, caption=f"Here's the generated image!\nTime Taken: {time.time() - StartTime}")
-
-                # Delete the generated image after sending
-                os.remove(destination_path)
-            else:
-                await wait_message.edit_text("Failed to generate the image.")
-        except Exception as e:
-            await wait_message.edit_text("Error: {}".format(e))
-    else:
-        await wait_message.edit_text("Error: {}".format(response.status_code))
+app.run()
