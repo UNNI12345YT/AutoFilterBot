@@ -33,6 +33,9 @@ async def imagine(client, message):
         await txt.edit(f"Error: {error_details}")
 
 # Run the bot
-app = Client("my_bot")
-
-app.run()
+if __name__ == "__main__":
+    app = Client("my_bot")
+    app.start()
+    print("Bot is running...")
+    app.idle()
+    app.stop()
