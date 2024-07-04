@@ -1,34 +1,72 @@
-import requests
-from pyrogram import Client, filters
-import os
-import asyncio
+from pyrogram import Client, filters, types as t
+from Utils import getText,paginate_models,ImageGeneration
+from bot import Models
+Database = {}
 
+@Client.on_message(filters.command(["draw","create","imagine","dream"]))
+async def draw(_: Client, m: t.Message):
+    global Database
+    prompt = getText(m)
+    if prompt is None:
+        return await m.reply_text("give something to create")
+    user = m.from_user
+    data = {'prompt':prompt,'reply_to_id':m.id}
+    Database[user.id] = data
+    btns = paginate_models(0,Models,user.id)
+    await m.reply_text(
+            text=f"Your prompt: `{prompt}`\n\nSelect a model",
+            reply_markup=t.InlineKeyboardMarkup(btns)
+            )
 
-# Function to handle the Google Image Search command
-@Client.on_message(filters.command("imagesearch"))
-async def image_search(client, message):
-    if len(message.command) < 2:
-        await message.reply_text("Please provide a search query.")
+@Client.on_callback_query(filters.regex(pattern=r"^d.(.*)"))
+async def selectModel(_:Client,query:t.CallbackQuery):
+    global Database
+    data = query.data.split('.')
+    auth_user = int(data[-1])
+    if query.from_user.id != auth_user:
+        return await query.answer("No.")
+    if len(data) > 3:
+        if data[1] == "right":
+            next_page = int(data[2])
+            await query.edit_message_reply_markup(
+                t.InlineKeyboardMarkup(
+                    paginate_models(next_page + 1,Models,auth_user)
+                    )
+                )
+        elif data[1] == "left":
+            curr_page = int(data[2])
+            await query.edit_message_reply_markup(
+                t.InlineKeyboardMarkup(
+                    paginate_models(curr_page - 1,Models,auth_user)
+                )
+            )
         return
-    
-    query = " ".join(message.command[1:])
-    url = f"https://api.safone.dev/image?query={query}"
-
+    modelId = int(data[1])
+    if modelId == -1:
+        del Database[auth_user]
+        await query.message.delete()
+        return
+    await query.edit_message_text("Please wait, generating your image")
+    promptData = Database.get(auth_user,None)
+    if promptData is None:
+        return await query.edit_message_text("Something went wrong.")
+    img_url = await ImageGeneration(modelId,promptData['prompt'])
+    if img_url is None or img_url == 2 or img_url ==1:
+        return await query.edit_message_text("something went wrong!")
+    elif img_url == 69:
+        return await query.edit_message_text("NSFW not allowed!")
+    images = []
+    modelName = [i['name'] for i in Models if i['id'] == modelId]
+    for i in img_url:
+        images.append(t.InputMediaDocument(i))
+    images[-1] = t.InputMediaDocument(img_url[-1],caption=f"Your prompt: `{promptData['prompt']}`\nModel: `{modelName}`") # for caption
+    await query.message.delete()
     try:
-        response = requests.get(url)
-        response.raise_for_status()
-        res = response.json()
-
-        # Log the entire JSON response for debugging
-        await message.reply_text(f"Full JSON response: {res}")
-
-        if 'data' in res and res['data']:
-            images = res['data'][:5]  # Get the top 5 images
-            for img in images:
-                await message.reply_photo(img['url'], caption=f"Title: {img['title']}\nSource: {img['source']}")
-        else:
-            await message.reply_text("No images found for your query.")
-    except requests.RequestException as e:
-        await message.reply_text(f"Request failed: {e}")
+        del Database[auth_user]
     except KeyError:
-        await message.reply_text("Unexpected response format.")
+        pass
+    await _.send_media_group(
+        chat_id=query.message.chat.id,
+        media=images,
+        reply_to_message_id=promptData['reply_to_id']
+    )
