@@ -23,13 +23,28 @@ async def imagine(client, message):
     try:
         response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
-        data = response.json()
-        await txt.edit(str(data))
+
+        # Check the content type of the response
+        content_type = response.headers.get('Content-Type')
+        if 'application/json' in content_type:
+            data = response.json()
+            await txt.edit(str(data))
+        else:
+            # Handle binary data
+            await txt.edit("Received binary data. Cannot display directly.")
+            
     except requests.exceptions.RequestException as e:
         error_details = {
             'error': str(e),
-            'response_content': response.content.decode('utf-8') if response.content else None
+            'response_content': None
         }
+        # Attempt to decode response content if it exists
+        if response.content:
+            try:
+                error_details['response_content'] = response.content.decode('utf-8')
+            except UnicodeDecodeError:
+                error_details['response_content'] = "Binary data received"
+        
         await txt.edit(f"Error: {error_details}")
 
 # Run the bot
