@@ -7,7 +7,7 @@ from pyrogram import filters, Client
 @Client.on_message(filters.command(['gen', 'imagine', 'generate']))
 async def generate_image(client, message):
     # Get the prompt from the command
-    prompt = '.join(message.command[1:])
+    prompt = ' '.join(message.command[1:])
 
     # Send a message to inform the user to wait
     wait_message = await message.reply_text("Please wait while I generate the image...")
@@ -20,7 +20,7 @@ async def generate_image(client, message):
     form_data = {
         'prompt': prompt,
         'output_format': 'bytes',
-        'equest_timestamp': str(int(time.time())),
+        'request_timestamp': str(int(time.time())),
         'user_is_subscribed': 'false',
     }
 
@@ -55,3 +55,4 @@ async def generate_image(client, message):
             await wait_message.edit_text("Error: {}".format(e))
     else:
         await wait_message.edit_text("Error: {}".format(response.status_code))
+
