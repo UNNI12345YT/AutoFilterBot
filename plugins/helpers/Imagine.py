@@ -1,58 +1,34 @@
 import requests
-import time
+from pyrogram import Client, filters
 import os
-from pyrogram import filters, Client 
+import asyncio
 
-# Command handler for /gen
-@Client.on_message(filters.command(['gen', 'imagine', 'generate']))
-async def generate_image(client, message):
-    # Get the prompt from the command
-    prompt = ' '.join(message.command[1:])
 
-    # Send a message to inform the user to wait
-    wait_message = await message.reply_text("Please wait while I generate the image...")
-    start_time = time.time()
+# Function to handle the Google Image Search command
+@Client.on_message(filters.command("imagesearch"))
+async def image_search(client, message):
+    if len(message.command) < 2:
+        await message.reply_text("Please provide a search query.")
+        return
+    
+    query = " ".join(message.command[1:])
+    url = f"https://api.safone.dev/image?query={query}"
 
-    # API endpoint URL
-    url = 'https://nandha-api.onrender.com/imagine'
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        res = response.json()
 
-    # Form data for the request
-    form_data = {
-        'prompt': prompt,
-        'output_format': 'bytes',
-        'request_timestamp': str(int(time.time())),
-        'user_is_subscribed': 'false',
-    }
+        # Log the entire JSON response for debugging
+        await message.reply_text(f"Full JSON response: {res}")
 
-    # Send a POST request to the API
-    response = requests.post(url, data=form_data)
-
-    if response.status_code == 200:
-        try:
-            if response.content:
-                # Create a directory to store the generated image if it doesn't exist
-                destination_dir = 'generated_images'
-                if not os.path.exists(destination_dir):
-                    os.makedirs(destination_dir)
-
-                destination_path = os.path.join(destination_dir, 'generated_image.jpg')
-
-                # Save the image to the destination path
-                with open(destination_path, 'wb') as f:
-                    f.write(response.content)
-
-                # Delete the wait message
-                await wait_message.delete()
-
-                # Send the generated image
-                await message.reply_photo(destination_path, caption=f"Here's the generated image!\nTime Taken: {time.time() - start_time}")
-
-                # Delete the generated image after sending
-                os.remove(destination_path)
-            else:
-                await wait_message.edit_text("Failed to generate the image.")
-        except Exception as e:
-            await wait_message.edit_text("Error: {}".format(e))
-    else:
-        await wait_message.edit_text("Error: {}".format(response.status_code))
-
+        if 'data' in res and res['data']:
+            images = res['data'][:5]  # Get the top 5 images
+            for img in images:
+                await message.reply_photo(img['url'], caption=f"Title: {img['title']}\nSource: {img['source']}")
+        else:
+            await message.reply_text("No images found for your query.")
+    except requests.RequestException as e:
+        await message.reply_text(f"Request failed: {e}")
+    except KeyError:
+        await message.reply_text("Unexpected response format.")
