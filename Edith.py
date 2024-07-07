@@ -8,7 +8,7 @@ bot_token = "6235483959:AAGkutp90SCxO3RaJuhPC0CG99iDKxOStUY"
 
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-# /mgpt command handler
+# /edith command handler
 @app.on_message(filters.command('edith'))
 async def lexica_askbot(client, message):
     text = message.text.split()[1:]
