@@ -2,9 +2,9 @@ from pyrogram import Client, filters
 import requests
 
 # Initialize Pyrogram client
-api_id = 
-api_hash = ""
-bot_token = ""
+api_id = 27408015
+api_hash = "2f07e7c921c8d2b982df12d65a46ca46"
+bot_token = "6235483959:AAGkutp90SCxO3RaJuhPC0CG99iDKxOStUY"
 
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
