@@ -1,6 +1,5 @@
 from pyrogram import Client, filters
 import requests
-import json
 
 @Client.on_message(filters.command('mgpt'))
 async def lexica_askbot(client, message):
@@ -17,30 +16,30 @@ async def lexica_askbot(client, message):
         'messages': [
             {
                 'role': "system",
-                'content': "You are a Malayalam talking assistant. Your owner is @UNNIdud.",
+                'content': "Your name is E.D.I.T.H, your meaning is EVEN DEATH I AM HERO.You are an AI. Developed by @UNNIdud",
             },
             {
                 'role': "user",
                 'content': text,
             },
         ],
-        "model_id": 3
+        "model_id": 23
     }
 
     api = 'https://api.qewertyy.dev/models'
 
     try:
         response = requests.post(api, json=payload)
-        response.raise_for_status()
+        response.raise_for_status()  # Raises an error for bad status codes
         data = response.json()
-        await txt.edit(data['content'])
-    except requests.exceptions.RequestException as e:
-        error_details = {
-            'error': str(e),
-            'response_content': response.content.decode('utf-8') if response.content else None,
-            'payload': json.dumps(payload, indent=2)
-        }
-        await txt.edit(f"Error: {error_details}")
+        await txt.edit(data.get('content', 'No response content'))
+    except requests.RequestException as e:
+        await txt.edit(f"Error: {e}")
+    except ValueError:
+        await txt.edit("Failed to parse response")
 
-
-
+# Ensure you have an appropriate way to run your Client instance
+# For example:
+# if name == "main":
+#     app = Client("my_account")
+#     app.run()
