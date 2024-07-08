@@ -12,7 +12,7 @@ async def lexica_askbot(client, message):
         await message.reply_text("Give An Input !!")
         return
     
-    sticker = await message.reply_sticker("CAACAgEAAyEFAASC9WXgAAIZimaL3h_RSOodrgNB7hkpx4PneapNAAI_BAACfP4gRFbt3wHCxUcLHgQ")
+    sticker = await message.reply_sticker("CAACAgEAAyEFAASC9WXgAAIZ3WaL6mYIUJZoGfwW7iy-a1IUji19AAKUBgACbVgYRLu-aQABrBjMCx4E")
     
     await asyncio.sleep(2)  # Adjust the delay as needed
     
@@ -45,12 +45,10 @@ async def lexica_askbot(client, message):
         except ValueError:
             result = "Failed to parse response"
         
-        current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         formatted_response = (
             f"ʜᴇʏ: {message.from_user.mention}\n\n"
             f"ϙᴜᴇʀʏ: {query}\n\n"
             f"ʀᴇsᴜʟᴛ:\n\n{result}\n\n"
-            f"Date and Time (IST): {current_datetime}"
         )
 
         await message.reply_text(formatted_response)
